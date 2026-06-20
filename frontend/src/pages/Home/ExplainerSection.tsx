@@ -8,7 +8,7 @@ const ExplainerSection = () => {
   const { code, language, explanation, isLoading, error, setCode, setLanguage, explain, reset } = useExplainerStore();
 
   return (
-    <section id="explainer" className="max-w-[900px] mx-auto px-8 py-24">
+    <section id="explainer" className="max-w-225 mx-auto px-8 py-24">
       <p className="font-mono text-[0.78rem] text-[#7C6FF7] tracking-[0.12em] uppercase mb-4">
         // ai feature
       </p>
@@ -42,7 +42,7 @@ const ExplainerSection = () => {
         onChange={(e) => setCode(e.target.value)}
         maxLength={1000} // <-- buat nge-limit
         placeholder={`// Paste kode ${language} lo di sini...`}
-        className="w-full min-h-[180px] font-mono text-[0.85rem] p-4 bg-[#111111] border border-[#2A2A2A] rounded-[10px] text-[#C0C0C0] resize-y box-border outline-none leading-[1.7] focus:border-[#7C6FF7] blur:border-[#2A2A2A]"
+        className="w-full min-h-45 font-mono text-[0.85rem] p-4 bg-[#111111] border border-[#2A2A2A] rounded-[10px] text-[#C0C0C0] resize-y box-border outline-none leading-[1.7] focus:border-[#7C6FF7] blur:border-[#2A2A2A]"
       />
 
       {/* Actions */}
@@ -70,7 +70,7 @@ const ExplainerSection = () => {
 
       {/* Error */}
       {error && (
-        <div className="mt-6 p-4 bg-[#DC3232]/[0.08] border border-[#DC3232]/20 rounded-lg">
+        <div className="mt-6 p-4 bg-[#DC3232]/8 border border-[#DC3232]/20 rounded-lg">
           <p className="font-sans text-[0.88rem] text-[#f87171] m-0">{error}</p>
         </div>
       )}
