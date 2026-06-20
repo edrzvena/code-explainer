@@ -44,6 +44,8 @@ Web app yang bisa jelasin syntax pakai model Claude AI, pilih bahasanya, dapat p
 ---
 
 ## Struktur Proyek
+
+```text
 code-explainer/
 ├── backend/
 │   └── src/
