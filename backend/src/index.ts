@@ -1,14 +1,7 @@
-import express, { Request, Response } from 'express'
+import app from './app';
+import { env } from './config/env';
 
-const app = express()
-const PORT = 3000
-
-app.use(express.json())
-
-app.get('/', (req: Request, res: Response) => {
-  res.json({ message: 'Hello from Express + TypeScript!' })
-})
-
-app.listen(PORT, () => {
-  console.log(`Server jalan di http://localhost:${PORT}`)
-})
+app.listen(env.port, () => {
+  console.log(`Server jalan di http://localhost:${env.port}`);
+  console.log(`Environment: ${env.nodeEnv}`);
+});
