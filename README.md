@@ -1,6 +1,6 @@
 # Code Explainer
 
-Web app yang bisa jelasin syntax pakai model Claude AI, pilih bahasanya, dapat penjelasan per blok logika dalam bahasa Indonesia.
+Web app yang bisa jelasin syntax code pakai model Claude AI, pilih bahasanya, dapat penjelasan per blok logika dalam bahasa Indonesia.
 
 ---
 
