@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import type { SupportedLanguage } from '../types/explainer.types';
 import { explainCode } from '../services/explainer.service';
+import axios from 'axios';
 
 interface ExplainerState {
   code: string;
@@ -33,8 +34,13 @@ export const useExplainerStore = create<ExplainerState>((set, get) => ({
     try {
       const result = await explainCode({ code, language });
       set({ explanation: result.explanation });
-    } catch {
-      set({ error: 'Gagal mendapatkan penjelasan. Pastikan backend lo jalan ya bro.' });
+    } catch (err) {
+      // Kalau backend kasih response 400 dengan pesan spesifik, tampilin itu
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        set({ error: err.response.data.message });
+      } else {
+        set({ error: 'Gagal mendapatkan penjelasan. Pastikan backend lo jalan ya bro.' });
+      }
     } finally {
       set({ isLoading: false });
     }

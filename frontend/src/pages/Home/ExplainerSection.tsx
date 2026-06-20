@@ -33,6 +33,7 @@ const ExplainerSection = () => {
       <textarea
         value={code}
         onChange={(e) => setCode(e.target.value)}
+        maxLength={1000} // <-- buat nge-limit
         placeholder={`// Paste kode ${language} lo di sini...`}
         style={{ width: '100%', minHeight: '180px', fontFamily: 'JetBrains Mono, monospace', fontSize: '0.85rem', padding: '1rem', background: '#111', border: '1px solid #2A2A2A', borderRadius: '10px', color: '#C0C0C0', resize: 'vertical', boxSizing: 'border-box', outline: 'none', lineHeight: 1.7 }}
         onFocus={e => (e.currentTarget.style.borderColor = '#7C6FF7')}
