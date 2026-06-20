@@ -8,22 +8,29 @@ const ExplainerSection = () => {
   const { code, language, explanation, isLoading, error, setCode, setLanguage, explain, reset } = useExplainerStore();
 
   return (
-    <section id="explainer" style={{ padding: '6rem 2rem', maxWidth: '900px', margin: '0 auto' }}>
-      <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.78rem', color: '#7C6FF7', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '1rem' }}>
+    <section id="explainer" className="max-w-[900px] mx-auto px-8 py-24">
+      <p className="font-mono text-[0.78rem] text-[#7C6FF7] tracking-[0.12em] uppercase mb-4">
         // ai feature
       </p>
-      <h2 style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', fontWeight: 700, color: '#E2E2E2', marginBottom: '0.75rem' }}>
+      <h2 className="font-mono text-[clamp(1.6rem,3vw,2.4rem)] font-bold text-[#E2E2E2] mb-3">
         Code Explainer
       </h2>
-      <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.95rem', color: '#666', marginBottom: '2rem' }}>
+      <p className="font-sans text-[0.95rem] text-[#666666] mb-8">
         Paste kode lo, Claude AI bakal jelasin line by line dalam bahasa Indonesia.
       </p>
 
       {/* Language selector */}
-      <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
+      <div className="flex gap-2 flex-wrap mb-4">
         {LANGUAGES.map((lang) => (
-          <button key={lang} onClick={() => setLanguage(lang)}
-            style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.78rem', padding: '0.4rem 1rem', borderRadius: '20px', border: `1px solid ${language === lang ? '#7C6FF7' : '#2A2A2A'}`, background: language === lang ? 'rgba(124,111,247,0.15)' : 'transparent', color: language === lang ? '#7C6FF7' : '#666', cursor: 'pointer', transition: 'all 0.15s' }}>
+          <button
+            key={lang}
+            onClick={() => setLanguage(lang)}
+            className={`font-mono text-[0.78rem] px-4 py-1.5 rounded-[20px] border transition-all duration-150 cursor-pointer ${
+              language === lang
+                ? 'border-[#7C6FF7] bg-[#7C6FF7]/15 text-[#7C6FF7]'
+                : 'border-[#2A2A2A] bg-transparent text-[#666666]'
+            }`}
+          >
             {lang}
           </button>
         ))}
@@ -35,39 +42,46 @@ const ExplainerSection = () => {
         onChange={(e) => setCode(e.target.value)}
         maxLength={1000} // <-- buat nge-limit
         placeholder={`// Paste kode ${language} lo di sini...`}
-        style={{ width: '100%', minHeight: '180px', fontFamily: 'JetBrains Mono, monospace', fontSize: '0.85rem', padding: '1rem', background: '#111', border: '1px solid #2A2A2A', borderRadius: '10px', color: '#C0C0C0', resize: 'vertical', boxSizing: 'border-box', outline: 'none', lineHeight: 1.7 }}
-        onFocus={e => (e.currentTarget.style.borderColor = '#7C6FF7')}
-        onBlur={e => (e.currentTarget.style.borderColor = '#2A2A2A')}
+        className="w-full min-h-[180px] font-mono text-[0.85rem] p-4 bg-[#111111] border border-[#2A2A2A] rounded-[10px] text-[#C0C0C0] resize-y box-border outline-none leading-[1.7] focus:border-[#7C6FF7] blur:border-[#2A2A2A]"
       />
 
       {/* Actions */}
-      <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1rem', justifyContent: 'flex-end' }}>
+      <div className="flex gap-3 mt-4 justify-end">
         {(code || explanation) && (
-          <button onClick={reset}
-            style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.88rem', padding: '0.65rem 1.25rem', background: 'transparent', border: '1px solid #2A2A2A', borderRadius: '8px', color: '#666', cursor: 'pointer' }}>
+          <button
+            onClick={reset}
+            className="font-sans text-[0.88rem] px-5 py-2.5 bg-transparent border border-[#2A2A2A] rounded-th-8 rounded-lg text-[#666666] cursor-pointer"
+          >
             Reset
           </button>
         )}
-        <button onClick={explain} disabled={isLoading || !code.trim()}
-          style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.88rem', fontWeight: 600, padding: '0.65rem 1.5rem', background: isLoading || !code.trim() ? '#2A2A2A' : '#7C6FF7', color: isLoading || !code.trim() ? '#555' : '#fff', border: 'none', borderRadius: '8px', cursor: isLoading || !code.trim() ? 'not-allowed' : 'pointer', transition: 'background 0.2s' }}>
+        <button
+          onClick={explain}
+          disabled={isLoading || !code.trim()}
+          className={`font-sans text-[0.88rem] font-semibold px-6 py-2.5 rounded-lg border-none transition-colors duration-200 ${
+            isLoading || !code.trim()
+              ? 'bg-[#2A2A2A] text-[#555555] cursor-not-allowed'
+              : 'bg-[#7C6FF7] text-white cursor-pointer'
+          }`}
+        >
           {isLoading ? 'Claude lagi baca...' : '✦ Jelasin kode ini'}
         </button>
       </div>
 
       {/* Error */}
       {error && (
-        <div style={{ marginTop: '1.5rem', padding: '1rem', background: 'rgba(220,50,50,0.08)', border: '1px solid rgba(220,50,50,0.2)', borderRadius: '8px' }}>
-          <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.88rem', color: '#f87171', margin: 0 }}>{error}</p>
+        <div className="mt-6 p-4 bg-[#DC3232]/[0.08] border border-[#DC3232]/20 rounded-lg">
+          <p className="font-sans text-[0.88rem] text-[#f87171] m-0">{error}</p>
         </div>
       )}
 
       {/* Result */}
       {explanation && (
-        <div style={{ marginTop: '1.5rem', background: '#111', border: '1px solid #2A2A2A', borderRadius: '10px', padding: '1.5rem' }}>
-          <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.72rem', color: '#7C6FF7', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem' }}>
+        <div className="mt-6 bg-[#111111] border border-[#2A2A2A] rounded-[10px] p-6">
+          <p className="font-mono text-[0.72rem] text-[#7C6FF7] uppercase tracking-[0.1rem] mb-4">
             ✦ Penjelasan dari Claude AI
           </p>
-          <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.9rem', color: '#C0C0C0', lineHeight: 1.85 }}>
+          <div className="font-sans text-[0.9rem] text-[#C0C0C0] leading-[1.85]">
             <ReactMarkdown>{explanation}</ReactMarkdown>
           </div>
         </div>

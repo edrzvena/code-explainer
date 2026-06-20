@@ -4,7 +4,7 @@ import Navbar from '../../components/layout/Navbar';
 
 const Home = () => {
   return (
-    <main style={{ background: '#0F0F0F', minHeight: '100vh' }}>
+    <main className="min-h-screen bg-[#0F0F0F]">
       <Navbar />
       <ExplainerSection />
       <Footer />
