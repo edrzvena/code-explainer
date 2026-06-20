@@ -66,7 +66,7 @@ code-explainer/
         └── types/          # TypeScript custom types
 
 ---
-
+```
 ## Cara Jalanin Lokal
 
 **Prerequisites:** Node.js >= 18, Anthropic API key dari [console.anthropic.com](https://console.anthropic.com)
