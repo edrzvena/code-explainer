@@ -1,8 +1,6 @@
 # Code Explainer
 
-Web app yang bisa jelasin kode program pakai Claude AI — paste kode lo, pilih bahasanya, dapat penjelasan per blok logika dalam bahasa Indonesia.
-
-Dibuat sebagai portfolio project untuk showcase full-stack development dan Claude API integration.
+Web app yang bisa jelasin syntax pakai model Claude AI, pilih bahasanya, dapat penjelasan per blok logika dalam bahasa Indonesia.
 
 ---
 
@@ -47,40 +45,23 @@ Dibuat sebagai portfolio project untuk showcase full-stack development dan Claud
 
 ## Struktur Proyek
 code-explainer/
-
 ├── backend/
-
 │   └── src/
-
 │       ├── config/         # env config & validasi
-
 │       ├── controllers/    # handler request/response
-
 │       ├── middlewares/    # error handler & 404
-
 │       ├── models/         # TypeScript types/interfaces
-
 │       ├── routes/         # definisi endpoint
-
 │       ├── services/       # logic panggil Anthropic API
-
 │       └── utils/          # validate input & build prompt
-
 │
-
 └── frontend/
-
-└── src/
-
-├── config/         # base URL API
-
-├── pages/Home/     # sections: Explainer
-
-├── services/       # axios call ke backend
-
-├── store/          # Zustand state
-
-└── types/          # TypeScript custom types
+    └── src/
+        ├── config/         # base URL API
+        ├── pages/Home/     # sections: Hero, About, Projects, Explainer
+        ├── services/       # axios call ke backend
+        ├── store/          # Zustand state
+        └── types/          # TypeScript custom types
 
 ---
 
