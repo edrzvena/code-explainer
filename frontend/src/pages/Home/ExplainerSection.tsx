@@ -16,7 +16,7 @@ const ExplainerSection = () => {
         Code Explainer
       </h2>
       <p className="font-sans text-[0.95rem] text-[#666666] mb-8">
-        Paste kode lo, Claude AI bakal jelasin line by line dalam bahasa Indonesia.
+        Paste syntax code, Claude AI bakal jelasin line by line dalam bahasa Indonesia.
       </p>
 
       {/* Language selector */}
@@ -41,7 +41,7 @@ const ExplainerSection = () => {
         value={code}
         onChange={(e) => setCode(e.target.value)}
         maxLength={1000} // <-- buat nge-limit
-        placeholder={`// Paste kode ${language} lo di sini...`}
+        placeholder={`// Paste syntax code...`}
         className="w-full min-h-45 font-mono text-[0.85rem] p-4 bg-[#111111] border border-[#2A2A2A] rounded-[10px] text-[#C0C0C0] resize-y box-border outline-none leading-[1.7] focus:border-[#7C6FF7] blur:border-[#2A2A2A]"
       />
 
